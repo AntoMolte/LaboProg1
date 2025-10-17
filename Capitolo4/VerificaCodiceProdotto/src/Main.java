@@ -13,16 +13,16 @@ public class Main {
             if (subString.equals("PROD-")){
                 if(lunghezzaNum == 4){
                     try{
-                        int numeriEffettivi = Integer.parseInt(numeri);
                         System.out.println("Codice valido:" + codice);
+                        int numeriEffettivi = Integer.parseInt(numeri);
                     }catch (NumberFormatException nfe){
-                        System.out.println("Motivo: Il codice deve contenere almeno 4 cifre numeriche dopo 'PROD-'.");
                         System.out.println("Codice non valido: " + codice);
+                        System.out.println("Motivo: Il codice deve contenere almeno 4 cifre numeriche dopo 'PROD-'.");
                     }
                 }
             }else{
-                System.out.println("Motivo: Il codice deve iniziare con 'PROD-'.");
                 System.out.println("Codice non valido: " + codice);
+                System.out.println("Motivo: Il codice deve iniziare con 'PROD-'.");
             }
         }
     }
