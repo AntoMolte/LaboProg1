@@ -4,7 +4,14 @@ public class Room {
 
     public Room(String nome, double superficieMq) {
         this.nome = nome;
-        this.superficieMq = superficieMq;
+        if(nome.isEmpty()){
+            throw new IllegalArgumentException("NO valido");
+        }
+        if (superficieMq < 0){
+            this.superficieMq = 1;
+        }else{
+            this.superficieMq = superficieMq;
+        }
     }
 
     public String getNome() {
@@ -13,6 +20,14 @@ public class Room {
 
     public double getSuperficieMq() {
         return superficieMq;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSuperficieMq(double superficieMq) {
+        this.superficieMq = superficieMq;
     }
 
     @Override

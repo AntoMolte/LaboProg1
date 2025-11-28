@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class House {
     private ArrayList<Room> stanze;
+    private double superficieTot;
 
     public House() {
         stanze = new ArrayList<>();
@@ -15,8 +16,8 @@ public class House {
         if(stanze.size() == 0){
             System.out.println("La casa è vuota.");
         }else{
-            for (int i = 0; i < stanze.size(); i++) {
-                System.out.println(Room.);
+            for (Room room : stanze) {
+                System.out.println(room.getNome());
             }
         }
     }
@@ -25,8 +26,11 @@ public class House {
         if(stanze.size() == 0){
             System.out.println("No Supercie.");
         }else{
-
+            for (Room room : stanze) {
+                superficieTot += room.getSuperficieMq();;
+            }
         }
+        System.out.println("Supercie: " + superficieTot);
     }
 
     @Override

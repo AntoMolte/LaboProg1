@@ -5,5 +5,6 @@ public class Main {
         House house = new House();
         house.aggiungiStanza("camera da letto", 68.8);
         house.visualizzaStanze();
+        house.getSupercieTotale();
     }
 }
