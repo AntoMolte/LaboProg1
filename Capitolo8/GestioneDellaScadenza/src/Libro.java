@@ -7,8 +7,6 @@ public class Libro extends Prodotto{
         super(codiceIdentificativo, dataCreazione);
         this.durataPrestito = durataPrestito;
     }
-
-
     @Override
     public LocalDate dataScadenza() {
         return getDataCreazione().plusDays(durataPrestito);
