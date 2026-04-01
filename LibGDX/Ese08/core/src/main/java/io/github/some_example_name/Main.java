@@ -12,9 +12,9 @@ public class Main extends ApplicationAdapter {
     private Texture player;
     private Texture enemy;
     private Texture background;
-    private float playerY, playerX;
+    private float playerX;
     private float playerSpeed = 200f;
-    private float enemyY, enemyX;
+    private float enemyX;
     private float enemySpeed = -200f;
 
     @Override
@@ -25,10 +25,7 @@ public class Main extends ApplicationAdapter {
         background = new Texture("background.jpg");
 
         playerX= 0;
-        playerY=210;
-
-        enemyY = 300;
-        enemyX =Gdx.graphics.getWidth() - enemy.getWidth();
+        enemyX = Gdx.graphics.getWidth() - enemy.getWidth();
     }
 
     @Override
@@ -38,16 +35,13 @@ public class Main extends ApplicationAdapter {
         float delta = Gdx.graphics.getDeltaTime();
 
         playerX += playerSpeed * delta;
-        if (playerX <= 0) {
-            playerX = 0;
+        if (playerX >= enemyX-enemy.getWidth()) {
             playerSpeed *= -1;
-        } else if (playerX >= Gdx.graphics.getWidth() - player.getWidth()) {
-            playerX = Gdx.graphics.getWidth() - player.getWidth();
+        } else if (playerX <= 0) {
             playerSpeed *= -1;
         }
         enemyX -= enemySpeed * delta;
-        if (enemyX <= 0) {
-            enemyX = 0;
+        if (enemyX <= playerX+player.getWidth()) {
             enemySpeed *= -1;
         } else if (enemyX >= Gdx.graphics.getWidth() - enemy.getWidth()) {
             enemyX = Gdx.graphics.getWidth() - enemy.getWidth();
@@ -56,8 +50,8 @@ public class Main extends ApplicationAdapter {
 
         batch.begin();
         batch.draw(background, 0 , 0, 1440, 960);
-        batch.draw(player, playerX, playerY);
-        batch.draw(enemy,enemyX, enemyY);
+        batch.draw(player, playerX, 210);
+        batch.draw(enemy,enemyX, 210);
 
         batch.end();
     }
